@@ -1,0 +1,19 @@
+# systemd-юнит для VPS: /etc/systemd/system/voice-bot.service
+[Unit]
+Description=Voice to text Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=voicebot
+WorkingDirectory=/opt/voice-bot
+EnvironmentFile=/opt/voice-bot/.env
+ExecStart=/opt/voice-bot/.venv/bin/python -m bot
+Restart=always
+RestartSec=5
+# Потолок памяти: бот не отнимет её у других проектов на том же сервере.
+# 30 мин звука в PCM — ~60 МБ, с запасом на декодирование хватает.
+MemoryMax=350M
+
+[Install]
+WantedBy=multi-user.target

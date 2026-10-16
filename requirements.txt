@@ -1,0 +1,7 @@
+aiogram>=3.31,<4
+aiosqlite>=0.22,<1
+httpx>=0.28,<1
+python-dotenv>=1.2,<2
+# 16.x — последняя ветка с колёсами под Python 3.10 (на VPS Ubuntu 22.04); ffmpeg внутри, ставить в систему не нужно
+av>=16,<17
+certifi
